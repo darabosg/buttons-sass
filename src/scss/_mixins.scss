@@ -1,0 +1,33 @@
+@use 'sass:color';
+
+@mixin btn-alt($background, $background-hover) {
+  background-color: $background;
+  border: none;
+  border-radius: 0.25rem;
+  box-shadow: inset 0 -5px 0 0 rgba($color: #000000, $alpha: 0.15);
+  color: white;
+  font: 1rem/1.5 Arial, Helvetica, sans-serif;
+  padding: 0.5rem 1rem;
+  user-select: none;
+  transition: text-shadow 0.3s ease-out, background-color 0.3s ease-out,
+    box-shadow 0.3s ease-out;
+  white-space: nowrap;
+
+  &:hover {
+    background-color: $background-hover;
+    cursor: pointer;
+    text-shadow: 0 0 1px white;
+    box-shadow: inset 0 -5px 0 0 rgba($color: #000000, $alpha: 0.15),
+      0 5px 11px rgba($color: #000000, $alpha: 0.2),
+      0 4px 11px rgba($color: #000000, $alpha: 0.2);
+  }
+}
+
+@mixin btn-style($selector, $background) {
+  &-#{$selector} {
+    background-color: $background;
+    &:hover {
+      background-color: color.scale($background, $lightness: +50%);
+    }
+  }
+}
